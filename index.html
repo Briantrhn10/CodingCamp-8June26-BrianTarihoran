@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focus Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <div id="greeting" class="greeting"></div>
+      <div id="datetime" class="datetime"></div>
+    </div>
+    <div class="header-right">
+      <button id="theme-toggle" class="btn-icon" title="Toggle light/dark mode">🌙</button>
+      <button id="settings-btn" class="btn-icon" title="Settings">⚙️</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- FOCUS TIMER -->
+    <section class="card timer-card">
+      <h2 class="card-title">Focus Timer</h2>
+      <div class="timer-display" id="timer-display">25:00</div>
+      <div class="timer-label" id="timer-label">Ready to focus</div>
+      <div class="timer-controls">
+        <button class="btn btn-primary" id="timer-start">▶ Start</button>
+        <button class="btn btn-secondary" id="timer-stop">⏸ Pause</button>
+        <button class="btn btn-ghost" id="timer-reset">↺ Reset</button>
+      </div>
+      <div class="timer-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TO-DO LIST -->
+    <section class="card todo-card">
+      <h2 class="card-title">To-Do List</h2>
+      <div class="todo-actions">
+        <div class="todo-input-row">
+          <input type="text" id="todo-input" class="input" placeholder="Add a new task…" maxlength="120" />
+          <button class="btn btn-primary" id="todo-add">Add</button>
+        </div>
+        <div class="todo-controls">
+          <select id="todo-sort" class="select">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="active">Active first</option>
+            <option value="done">Done first</option>
+          </select>
+          <span class="todo-count" id="todo-count">0 tasks</span>
+        </div>
+      </div>
+      <ul class="todo-list" id="todo-list"></ul>
+    </section>
+
+    <!-- QUICK LINKS -->
+    <section class="card links-card">
+      <h2 class="card-title">Quick Links</h2>
+      <div class="links-input-row">
+        <input type="text" id="link-name" class="input" placeholder="Label" maxlength="30" />
+        <input type="url" id="link-url" class="input" placeholder="https://…" />
+        <button class="btn btn-primary" id="link-add">Add</button>
+      </div>
+      <div class="links-grid" id="links-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal-overlay" id="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h3 id="modal-title">Settings</h3>
+        <button class="btn-icon" id="modal-close" title="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <label class="field-label" for="setting-name">Your name</label>
+        <input type="text" id="setting-name" class="input" placeholder="Enter your name" maxlength="40" />
+
+        <label class="field-label" for="setting-pomodoro">Focus duration (minutes)</label>
+        <input type="number" id="setting-pomodoro" class="input" min="1" max="120" value="25" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="setting-save">Save</button>
+        <button class="btn btn-ghost" id="setting-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT TASK MODAL -->
+  <div class="modal-overlay" id="edit-modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="edit-modal-title">
+      <div class="modal-header">
+        <h3 id="edit-modal-title">Edit Task</h3>
+        <button class="btn-icon" id="edit-modal-close" title="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <label class="field-label" for="edit-task-input">Task</label>
+        <input type="text" id="edit-task-input" class="input" maxlength="120" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="edit-task-save">Save</button>
+        <button class="btn btn-ghost" id="edit-task-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
